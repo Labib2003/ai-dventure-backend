@@ -6,7 +6,10 @@ config();
 
 const connectionString = process.env.DATABASE_URL;
 
-const client = postgres(connectionString, { prepare: false });
+const client = postgres(connectionString, {
+  prepare: false,
+  ssl: 'require',
+});
 const db = drizzle(client);
 
 export default db;
